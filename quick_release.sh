@@ -8,9 +8,10 @@ else
     git checkout -b release-$1 develop
     sed -i '$ d' README.md
     echo "v$1" >> README.md
+    git commit -am "Bumped readme version number to $1"
     git checkout master
     git merge -m "Release $1" release-$1
-    git tag -a v$1
+    git tag -m "Release version $1" -a v$1
     git push origin master
     git push origin v$1
     git checkout develop
